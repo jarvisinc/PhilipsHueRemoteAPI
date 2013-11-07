@@ -13,34 +13,55 @@ Get the status of the light bulbs
 Turn on the light bulb
 ###/off
 Turn off the light bulb
-###/status
-Same as /
+###/api
+Transparent API POST (=official PUT API)
+
+Example:
+```
+Official API Endpoint : /api/<username>/lights/<id>/state
+Official API Method: PUT
+Official API Data: {"ct":153, "colormode":"ct"}
+
+Custom API Endpoint : http://localhost:5000/api/lights/<id>/state
+Custom API Method: POST
+Custom API Data: EXACT THE SAME AS ABOVE
+```
+It should in theory support all official PUT API calls to the URL endpoint of ```/api/username/*******```
+
+So any official ```/api/username/**********``` with method PUT
+can be achieved using ```http://localhost:5000/api/***********``` with method POST
+
+The response is always 200 unfortunately unless the request body is not JSON format
 
 ##Setup
 Fill in credentials.py.sample and rename it to credentials.py
 
 ##Install
 Setup virtual environment
+
 ```
 virtualenv ev
-```
-Activate virtual environment
-```
 source ev/bin/activate
 ```
+
 Install required packages
+
 ```
 pip install -r requirements.txt
 ```
+
 ##Run
+
 ```
 python hueapiserver.py
 ```
 
 ##Limitations
-It is hard coded to work with groups but can also be used with individual lights.
+```On/Off``` is hard coded to work with groups but can also be used with individual lights.
+with ```/api``` you can do any method you like but currently only support POST (=PUT on official API)
 
 ##License
+```
 The MIT License (MIT)
 
 Copyright (c) 2013 Jarvis Inc (by Jianer Shi hipaulshi@gmail.com)
@@ -62,3 +83,4 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
+```
