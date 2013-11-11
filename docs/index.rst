@@ -1,8 +1,6 @@
 Philips Hue Remote API
 ==================================================
 
-Contents:
-
 .. toctree::
    :maxdepth: 2
 
