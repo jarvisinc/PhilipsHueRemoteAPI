@@ -14,7 +14,16 @@ def on():
 def off():
     return philipsControl("off");
 
-@app.route('/api/<path:path>',methods=['POST', 'GET'])
+@app.route('/api', methods=['GET'])
+def apiHandlerDefault():
+	return api(request,'');
+
+@app.route('/api/', methods=['GET'])
+def apiHandlerDefault2():
+	return api(request,'');
+
+
+@app.route('/api/<path:path>',methods=['POST','PUT'])
 def apiHandler(path):
 	return api(request,path);
 
