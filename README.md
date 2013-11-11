@@ -14,7 +14,7 @@ Turn on the light bulb
 ###/off (depreciated)
 Turn off the light bulb
 ###/api
-Transparent API POST
+Transparent API
 
 ##Transparent API Layer (/api)
 This is a work in progress. It is aimed to support PUT/POST/GET
