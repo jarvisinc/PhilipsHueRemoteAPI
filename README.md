@@ -1,20 +1,26 @@
 #Philips Hue Remote Control API
 
-Sicne the Philips Hue [Portal API](http://developers.meethue.com/5_portalapi.html) is not released yet, this API is developed to server the very basic tasks of controlling Philips Hue light remotely.
+Sicne the Philips Hue [Portal API](http://developers.meethue.com/5_portalapi.html) is not yet released, this API is developed so that it is possible to control philips hue remotely.
 
-The work is based on this paper: [Hacking Lightbulbs: Security Evaluation of the Philips Hue Personal Wireless Lighting System](http://www.dhanjani.com/docs/Hacking%20Lighbulbs%20Hue%20Dhanjani%202013.pdf) by [Nitesh Dhanjani](http://www.dhanjani.com/about.html)
+The work is based on [Hacking Lightbulbs: Security Evaluation of the Philips Hue Personal Wireless Lighting System](http://www.dhanjani.com/docs/Hacking%20Lighbulbs%20Hue%20Dhanjani%202013.pdf) by [Nitesh Dhanjani](http://www.dhanjani.com/about.html)
 
-The API server is running on top of [flask](http://flask.pocoo.org/)
+The API server is running on top of [flask](http://flask.pocoo.org/) python web framework.
 
 ##REST Endpoint
-###/
+###/ (depreciated)
 Get the status of the light bulbs
-###/on
+###/on (depreciated)
 Turn on the light bulb
-###/off
+###/off (depreciated)
 Turn off the light bulb
 ###/api
-Transparent API POST (=official PUT API)
+Transparent API POST
+
+##Transparent API Layer (/api)
+This is a work in progress. It is aimed to support PUT/POST/GET
+ * PUT/POST works just like official API
+ * The response from PUT/POST is always 200. The call to the API endpoint discovered by the paper only give limited response
+ * GET will get all the current status of the Philips Hue bridge
 
 Example:
 ```
@@ -23,7 +29,7 @@ Official API Method: PUT
 Official API Data: {"ct":153, "colormode":"ct"}
 
 Custom API Endpoint : http://localhost:5000/api/lights/<id>/state
-Custom API Method: POST
+Custom API Method: PUT
 Custom API Data: EXACT THE SAME AS ABOVE
 ```
 It should in theory support all official PUT API calls to the URL endpoint of ```/api/username/*******```
@@ -35,6 +41,7 @@ The response is always 200 unfortunately unless the request body is not JSON for
 
 ##Setup
 Fill in credentials.py.sample and rename it to credentials.py
+In order for it to work you need a token and bridgeID
 
 ##Install
 Setup virtual environment
@@ -57,8 +64,12 @@ python hueapiserver.py
 ```
 
 ##Limitations
-```On/Off``` is hard coded to work with groups but can also be used with individual lights.
-with ```/api``` you can do any method you like but currently only support POST (=PUT on official API)
+```On/Off``` is hard coded to work with groups. It's probably shouldn't be included in the API anyway and is part of the legacy code.
+
+With```/api``` you can do PUT/POST to control correctly, GET will get you all the status. Other method is not supported at the moment
+
+##Documentation
+http://philips-hue-remote-api.readthedocs.org/
 
 ##License
 ```
