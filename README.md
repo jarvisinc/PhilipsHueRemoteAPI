@@ -32,16 +32,16 @@ Custom API Endpoint : http://localhost:5000/api/lights/<id>/state
 Custom API Method: PUT
 Custom API Data: EXACT THE SAME AS ABOVE
 ```
-It should in theory support all official PUT API calls to the URL endpoint of ```/api/username/*******```
+It should in theory support all official PUT/POST API calls to the URL endpoint of ```/api/username/*******```
 
-So any official ```/api/username/**********``` with method PUT
-can be achieved using ```http://localhost:5000/api/***********``` with method POST
+So any official ```/api/username/**********``` with method PUT/POST
+can be achieved using ```http://localhost:5000/api/***********``` with method PUT/POST
 
-The response is always 200 unfortunately unless the request body is not JSON format
+The response is always 200 unfortunately unless the request body is not JSON format, in which case it gaves an error message
 
 ##Setup
-Fill in credentials.py.sample and rename it to credentials.py
-In order for it to work you need a token and bridgeID
+Fill in ```credentials.py.sample``` and rename it to ```credentials.py```
+In order for it to work you need a ```token``` and ```bridgeID```
 
 ##Install
 Setup virtual environment
