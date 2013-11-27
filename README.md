@@ -6,15 +6,25 @@ The work is based on [Hacking Lightbulbs: Security Evaluation of the Philips Hue
 
 The API server is running on top of [flask](http://flask.pocoo.org/) python web framework.
 
-##REST Endpoint
-###/ (depreciated)
-Get the status of the light bulbs
-###/on (depreciated)
-Turn on the light bulb
-###/off (depreciated)
-Turn off the light bulb
-###/api
-Transparent API
+##How Does This Remote API Work?
+I wrote a overview explanation of the remote API hack of the Philips Hue in a blog post here: [http://paulshi.github.io/technical/2013/11/27/Philips-Hue-Remote-API-Explained.html](http://paulshi.github.io/technical/2013/11/27/Philips-Hue-Remote-API-Explained.html)
+
+##RESTful API Endpoint
+
+####/api
+Transparent API (explained laster)
+
+###Legacy Endpoint
+Those endpoint will depreciate sometime in the future. They are legacy code and please refrain from using those endpoints.
+
+	/
+	Get the status of the light bulbs
+	
+	/on
+	Turn on the light bulb
+	
+	/off
+	Turn off the light bulb
 
 ##Transparent API Layer (/api)
 This is a work in progress. It is aimed to support PUT/POST/GET
@@ -64,9 +74,8 @@ python hueapiserver.py
 ```
 
 ##Limitations
-```On/Off``` is hard coded to work with groups. It's probably shouldn't be included in the API anyway and is part of the legacy code.
-
 With```/api``` you can do PUT/POST to control correctly, GET will get you all the status. Other method is not supported at the moment
+
 
 ##Documentation
 http://philips-hue-remote-api.readthedocs.org/
