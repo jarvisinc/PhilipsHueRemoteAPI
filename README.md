@@ -20,15 +20,14 @@ Transparent API
 
 Example:
 
-```
-Official API Endpoint : /api/<username>/lights/<id>/state
-Official API Method: PUT
-Official API Data: {"ct":153, "colormode":"ct"}
+	Official API Endpoint : /api/<username>/lights/<id>/state
+	Official API Method: PUT
+	Official API Data: {"ct":153, "colormode":"ct"}
 
-Custom API Endpoint : http://localhost:5000/api/lights/<id>/state
-Custom API Method: PUT
-Custom API Data: EXACT THE SAME AS ABOVE
-```
+	Custom API Endpoint : http://localhost:5000/api/lights/<id>/state
+	Custom API Method: PUT
+	Custom API Data: EXACT THE SAME AS ABOVE
+
 
 It should in theory support all official PUT/POST API calls to the URL endpoint of `/api/username/*******`
 
@@ -38,8 +37,25 @@ can be achieved using `http://localhost:5000/api/***********` with method PUT/PO
 The response is always 200 unfortunately unless the request body is not JSON format, in which case it gaves an error message
 
 ##Setup
-Fill in `credentials.py.sample` and rename it to ```credentials.py```
-In order for it to work you need a `token` and `bridgeID` as explained in my blog [post](http://paulshi.github.io/technical/2013/11/27/Philips-Hue-Remote-API-Explained.html) mentioned earlier.
+Fill in `credentials.py.sample` and rename it to ```credentials.py```, there are 2 parameters you need to fill:
+	
+* `ACCESSTOKEN`
+* `BRIDGEID`
+
+Steps:
+
+1. Find your `BRIDGEID` from [https://www.meethue.com/api/nupnp](https://www.meethue.com/api/nupnp). (or in [My bridge](https://www.meethue.com/en-US/user/preferencessmartbridge) page on the meethue website and by clicking on "Show me more")
+
+2. Get `ACCESSTOKEN`
+
+		www.meethue.com/en-US/api/gettoken?devicename=iPhone+5&appid=hueapp&deviceid=**BRIDGEID**
+
+3. **Right** click on "BACK TO THE APP" and write down `ACCESSTOKEN` inside the link it redirect to
+
+		phhueapp://sdk/login/**ACCESSTOKEN**
+
+
+as explained in my [post](http://paulshi.github.io/technical/2013/11/27/Philips-Hue-Remote-API-Explained.html) mentioned earlier.
 
 ##Install
 Setup virtual environment

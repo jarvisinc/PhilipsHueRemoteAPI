@@ -1,14 +1,12 @@
 from flask import Flask,request, make_response, jsonify
 import requests;
 import json;
-from credentials import token,bridgeID;
+from credentials import ACCESSTOKEN,BRIDGEID;
 
 #setup
 API_ADDRESS_CONTROL = 'https://www.meethue.com/api/sendmessage'
 API_STATUS_ADDRESS = 'https://www.meethue.com/api/getbridge'
 ContentType='application/x-www-form-urlencoded'
-on_message = 'clipmessage={ bridgeId: "'+bridgeID+'", clipCommand: { url: "/api/0/groups/0/action", method: "PUT", body: {"on":true} } }'
-off_message = 'clipmessage={ bridgeId: "'+bridgeID+'", clipCommand: { url: "/api/0/groups/0/action", method: "PUT", body: {"on":false} } }'
 headers = {'content-type':ContentType}
 
 #global const
@@ -36,7 +34,7 @@ def constructCustomMsg(apiEndPoint, command, method):
   """
   #apiEndPoint and command needs to be string
   #command needs to conform to json format
-  custom_control_message_structure = 'clipmessage={ bridgeId: "'+bridgeID+'", clipCommand: { url: "/api/0/'+apiEndPoint+'", method: "'+method+'", body: '+command+' } }'
+  custom_control_message_structure = 'clipmessage={ bridgeId: "'+BRIDGEID+'", clipCommand: { url: "/api/0/'+apiEndPoint+'", method: "'+method+'", body: '+command+' } }'
   return custom_control_message_structure
 
 def philipsControlCustom(msgToSent):
@@ -44,7 +42,7 @@ def philipsControlCustom(msgToSent):
   actual message sender
 
   """
-  payload = {'token':token};
+  payload = {'token':ACCESSTOKEN};
   r = requests.post(API_ADDRESS_CONTROL, params=payload,headers=headers,data=msgToSent);
   return r.text
 
@@ -53,7 +51,7 @@ def getPhilipsHueInfo():
   This method get all info related the the hue bridge
 
   """
-  payload = {'token': token, 'bridgeid': bridgeID};
+  payload = {'token': ACCESSTOKEN, 'bridgeid': BRIDGEID};
   r = requests.get(API_STATUS_ADDRESS, params=payload)
   print (json.dumps(json.loads(r.content),indent=4))
   res = json.loads(r.content);
