@@ -12,27 +12,14 @@ I wrote a overview explanation of the remote API hack of the Philips Hue in a bl
 ##RESTful API Endpoint
 
 ####/api
-Transparent API (explained laster)
+Transparent API
 
-###Legacy Endpoint
-Those endpoint will depreciate sometime in the future. They are legacy code and please refrain from using those endpoints.
-
-	/
-	Get the status of the light bulbs
-	
-	/on
-	Turn on the light bulb
-	
-	/off
-	Turn off the light bulb
-
-##Transparent API Layer (/api)
-This is a work in progress. It is aimed to support PUT/POST/GET
  * PUT/POST works just like official API
  * The response from PUT/POST is always 200. The call to the API endpoint discovered by the paper only give limited response
  * GET will get all the current status of the Philips Hue bridge
 
 Example:
+
 ```
 Official API Endpoint : /api/<username>/lights/<id>/state
 Official API Method: PUT
@@ -42,16 +29,17 @@ Custom API Endpoint : http://localhost:5000/api/lights/<id>/state
 Custom API Method: PUT
 Custom API Data: EXACT THE SAME AS ABOVE
 ```
-It should in theory support all official PUT/POST API calls to the URL endpoint of ```/api/username/*******```
 
-So any official ```/api/username/**********``` with method PUT/POST
-can be achieved using ```http://localhost:5000/api/***********``` with method PUT/POST
+It should in theory support all official PUT/POST API calls to the URL endpoint of `/api/username/*******`
+
+So any official `/api/username/**********` with method PUT/POST
+can be achieved using `http://localhost:5000/api/***********` with method PUT/POST
 
 The response is always 200 unfortunately unless the request body is not JSON format, in which case it gaves an error message
 
 ##Setup
-Fill in ```credentials.py.sample``` and rename it to ```credentials.py```
-In order for it to work you need a ```token``` and ```bridgeID```
+Fill in `credentials.py.sample` and rename it to ```credentials.py```
+In order for it to work you need a `token` and `bridgeID` as explained in my blog [post](http://paulshi.github.io/technical/2013/11/27/Philips-Hue-Remote-API-Explained.html) mentioned earlier.
 
 ##Install
 Setup virtual environment

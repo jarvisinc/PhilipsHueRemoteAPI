@@ -4,15 +4,7 @@ app = Flask(__name__)
 
 @app.route("/")
 def status():
-      return philipsInfo();
-
-@app.route('/on')
-def on():
-    return philipsControl("on");
-
-@app.route('/off')
-def off():
-    return philipsControl("off");
+      return "use /api endpoint";
 
 @app.route('/api', methods=['GET'])
 def apiHandlerDefault():

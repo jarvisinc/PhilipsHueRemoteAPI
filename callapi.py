@@ -48,37 +48,6 @@ def philipsControlCustom(msgToSent):
   r = requests.post(API_ADDRESS_CONTROL, params=payload,headers=headers,data=msgToSent);
   return r.text
 
-def philipsControl(action):
-  payload = {'token':token};
-  r = requests.post(API_ADDRESS_CONTROL, params=payload,headers=headers,data=messageToSent(action));
-  return r.text
-
-def philipsInfo():
-  """
-  :return: return true if all lights are on, otherwise false
-
-  """ 
-  res = getPhilipsHueInfo()
-  # print (res['lights']['1']['name']);
-  numreachable = 0;
-  numon = 0;
-  for key in res['lights']:
-    reachable = res['lights'][key]['state']['reachable'];
-    if (reachable == True):
-      numreachable = numreachable+1;
-      # print (res['lights'][key]['name']);
-      isOn=res['lights'][key]['state']['on'];
-      if (isOn):
-        numon=numon+1;
-  # print numreachable;
-  # print numon;
-  if (numreachable == numon):
-    # print ('all on');
-    return 'True';
-  else:
-    # print ('not all on');
-    return 'False';
-
 def getPhilipsHueInfo():
   """
   This method get all info related the the hue bridge
@@ -89,21 +58,6 @@ def getPhilipsHueInfo():
   print (json.dumps(json.loads(r.content),indent=4))
   res = json.loads(r.content);
   return res
-
-def messageToSent(action):
-  """
-  this method construct message to sent in order to turn on or off ALL lights+light strip in the system
-  
-  :type action: str
-  :param action: on/off
-
-  """
-  if (action == "on"):
-    return on_message;
-  elif (action == "off"):
-    return off_message;
-  else:
-    return "not correct instruction"
 
 def api(request,path):
   """
