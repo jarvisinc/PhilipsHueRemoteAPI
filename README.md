@@ -1,10 +1,10 @@
 #Philips Hue Remote Control API
 
-Sicne the Philips Hue [Portal API](http://developers.meethue.com/5_portalapi.html) is not yet released, this API is developed so that it is possible to control philips hue remotely.
+This is the unofficial implementation of Philips Hue [Portal API](http://developers.meethue.com/5_portalapi.html). It allows remote control to Philips Hue from outside the local network.
 
 The work is based on [Hacking Lightbulbs: Security Evaluation of the Philips Hue Personal Wireless Lighting System](http://www.dhanjani.com/docs/Hacking%20Lighbulbs%20Hue%20Dhanjani%202013.pdf) by [Nitesh Dhanjani](http://www.dhanjani.com/about.html)
 
-The API server is running on top of [flask](http://flask.pocoo.org/) python web framework.
+The API server is running on top of [flask](http://flask.pocoo.org/) python web framework. The API server is supposed to run in the cloud, so you can access it from anywhere.
 
 ##How Does This Remote API Work?
 I wrote a overview explanation of the remote API hack of the Philips Hue in a blog post here: [http://paulshi.github.io/technical/2013/11/27/Philips-Hue-Remote-API-Explained.html](http://paulshi.github.io/technical/2013/11/27/Philips-Hue-Remote-API-Explained.html)
@@ -12,7 +12,7 @@ I wrote a overview explanation of the remote API hack of the Philips Hue in a bl
 ##RESTful API Endpoint
 
 ####/api
-Transparent API
+(Transparent API)
 
  * PUT/POST works just like official API
  * The response from PUT/POST is always 200. The call to the API endpoint discovered by the paper only give limited response
@@ -33,8 +33,6 @@ It should in theory support all official PUT/POST API calls to the URL endpoint 
 
 So any official `/api/username/**********` with method PUT/POST
 can be achieved using `http://localhost:5000/api/***********` with method PUT/POST
-
-The response is always 200 unfortunately unless the request body is not JSON format, in which case it gaves an error message
 
 ##Setup
 Fill in `credentials.py.sample` and rename it to ```credentials.py```, there are 2 parameters you need to fill:
@@ -76,10 +74,6 @@ pip install -r requirements.txt
 ```
 python hueapiserver.py
 ```
-
-##Limitations
-With```/api``` you can do PUT/POST to control correctly, GET will get you all the status. Other method is not supported at the moment
-
 
 ##Documentation
 http://philips-hue-remote-api.readthedocs.org/
