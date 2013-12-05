@@ -14,11 +14,15 @@ I wrote a overview explanation of the remote API hack of the Philips Hue in a bl
 ####/api
 (Transparent API)
 
+Features:
+
  * PUT/POST works just like official API
  * The response from PUT/POST is always 200. The call to the API endpoint discovered by the paper only give limited response
- * GET will get all the current status of the Philips Hue bridge
+ * GET support the root endpoint (`/api`) only, it will get all the current status of the Philips Hue bridge
 
 Example:
+
+`PUT`/`POST`
 
 	Official API Endpoint : /api/<username>/lights/<id>/state
 	Official API Method: PUT
@@ -28,7 +32,11 @@ Example:
 	Custom API Method: PUT
 	Custom API Data: EXACT THE SAME AS ABOVE
 
+`GET`
 
+	Custom API Endpoint: http://localhost:5000/api
+	Custom API Method: GET
+		
 It should in theory support all official PUT/POST API calls to the URL endpoint of `/api/username/*******`
 
 So any official `/api/username/**********` with method PUT/POST
