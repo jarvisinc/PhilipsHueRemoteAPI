@@ -17,9 +17,15 @@ I wrote a overview explanation of the remote API hack of the Philips Hue in a bl
 Features:
 
  * PUT/POST works just like official API
- * The response from PUT/POST is always 200. The call to the API endpoint discovered by the paper only give limited response
- * GET support the root endpoint (`/api`) only, it will get all the current status of the Philips Hue bridge
+ * GET will get info for all devices
 
+Limitations:
+
+ * PUT/POST Response is always 200
+ * GET only works to root api endpoint (`/api`)
+ 
+The first limitation is due to the private endpoint on Philips Hue website side. It only gives response when it receives or rejects your command, but doesn't tell you whether it succeeded in executing it or not. 
+ 
 Example:
 
 `PUT`/`POST`
