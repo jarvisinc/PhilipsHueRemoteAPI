@@ -1,4 +1,4 @@
-#Philips Hue Remote Control API
+# Philips Hue Remote Control API
 
 This is the unofficial implementation of Philips Hue [Portal API](http://developers.meethue.com/5_portalapi.html). It allows remote control to Philips Hue from outside the local network.
 
@@ -6,12 +6,12 @@ The work is based on [Hacking Lightbulbs: Security Evaluation of the Philips Hue
 
 The API server is running on top of [flask](http://flask.pocoo.org/) python web framework. The API server is supposed to run in the cloud, so you can access it from anywhere.
 
-##How Does This Remote API Work?
+## How Does This Remote API Work?
 I wrote a overview explanation of the remote API hack of the Philips Hue in a blog post here: [http://paulshi.github.io/technical/2013/11/27/Philips-Hue-Remote-API-Explained.html](http://paulshi.github.io/technical/2013/11/27/Philips-Hue-Remote-API-Explained.html)
 
-##RESTful API Endpoint
+## RESTful API Endpoint
 
-####/api
+#### /api
 (Transparent API)
 
 Features:
@@ -48,7 +48,7 @@ It should in theory support all official PUT/POST API calls to the URL endpoint 
 So any official `/api/username/**********` with method PUT/POST
 can be achieved using `http://localhost:5000/api/***********` with method PUT/POST
 
-##Setup
+## Setup
 Fill in `credentials.py.sample` and rename it to ```credentials.py```, there are 2 parameters you need to fill:
 	
 * `ACCESSTOKEN`
@@ -69,7 +69,7 @@ Steps:
 
 as explained in my [post](http://paulshi.github.io/technical/2013/11/27/Philips-Hue-Remote-API-Explained.html) mentioned earlier.
 
-##Install
+## Install
 Setup virtual environment
 
 ```
@@ -83,16 +83,16 @@ Install required packages
 pip install -r requirements.txt
 ```
 
-##Run
+## Run
 
 ```
 python hueapiserver.py
 ```
 
-##Documentation
+## Documentation
 http://philips-hue-remote-api.readthedocs.org/
 
-##License
+## License
 
 ```
 The MIT License (MIT)
